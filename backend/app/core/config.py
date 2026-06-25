@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = "models/text-embedding-004"
 
     CHROMA_DB: str = "./chroma_db"
+    CRAWLER_TIMEOUT: int = 20
+    CRAWLER_MAX_PAGES: int = 100
+    CRAWLER_CONCURRENCY: int = 10
 
     model_config = SettingsConfigDict(
         env_file=".env",
