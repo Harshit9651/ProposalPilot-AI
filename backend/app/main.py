@@ -5,7 +5,9 @@ from app.core.logger import logger
 from app.exceptions.handlers import register_exception_handlers
 from app.middleware.request_logger import RequestLoggingMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.crawler import router as crawler_router
+# from app.api.crawler import router as crawler_router
+from app.api.scraper import router as scraper_router
+
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -31,9 +33,14 @@ app.include_router(
     prefix="/api/v1",
     tags=["System"]
 )
+# app.include_router(
+#     crawler_router,
+#     prefix="/api/v1",
+# )
 app.include_router(
-    crawler_router,
+    scraper_router,
     prefix="/api/v1",
 )
+
 
 logger.info("🚀 ProposalPilot AI Started Successfully")
